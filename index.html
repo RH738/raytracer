@@ -1,0 +1,54 @@
+<html>
+
+<head>
+	<title>Raytracer in ThreeJS</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		canvas {
+			width: 800px;
+			height: 600px
+		}
+
+		.row {
+			padding-bottom: 50px
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<script src="bower_components/three.js/three.min.js"></script>
+		<script src="bower_components/intersection/Intersection.js" charset="utf-8"></script>
+		<script src="bower_components/intersection/Point2D.js" charset="utf-8"></script>
+		<script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+		<script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" media="screen" title="no title">
+		<link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css" media="screen" title="no title">
+
+
+		<div class="row  text-center" id='raytracer'></div>
+
+		<div class="row">
+			<input id="opacitySlider" data-slider-id='opacity' type="text" data-slider-min="0.001" data-slider-max="1" data-slider-step="0.005" data-slider-value="0.5" />
+		</div>
+
+		<script src="raytracer.js"></script>
+		<script src="OpticalElements.js"></script>
+		<script src="renderer.js"></script>
+		<script type="text/javascript">
+		var op = $('#opacitySlider').slider({
+			formatter: function(value) {
+				return 'opacity level: ' + Math.round(value * 100);
+			}
+		}).on("slide", function(){
+			updateRayOpacity(op.val())
+		});
+		</script>
+	</div>
+</body>
+
+</html>
